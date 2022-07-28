@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="androis.example.filmapp.presentation.screen.film.FilmViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/grey_dark_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/toolbar_image_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_arrow_back" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/app_margin_20"
+                    android:ellipsize="end"
+                    android:gravity="fill"
+                    android:maxLines="2"
+                    android:text="@{viewModel.nameLocal}"
+                    android:textColor="@color/grey_light"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold"
+                    tools:text="NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus NameRus " />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="@dimen/app_margin_20"
+            android:layout_marginTop="@dimen/app_margin_8"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+            android:id="@+id/name_eng"
+            android:layout_width="@dimen/view_width_200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_20"
+            android:layout_marginTop="@dimen/app_margin_8"
+            android:text="@{viewModel.nameEng}"
+            android:textColor="@color/grey_light"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:text="Name english Name english Name english Name english Name english Name english Name english Name english Name english " />
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_20"
+            android:layout_marginTop="@dimen/app_margin_8"
+            android:text="@{viewModel.year}"
+            android:textColor="@color/grey_light"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/name_eng"
+            tools:text="Year" />
+
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_20"
+            android:layout_marginTop="@dimen/app_margin_8"
+            android:text="@{viewModel.rate}"
+            android:textColor="@color/grey_light"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/year"
+            tools:text="Rate" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_8"
+            android:text="@{viewModel.description}"
+            android:textColor="@color/grey_light"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintTop_toBottomOf="@id/poster"
+            tools:text="Description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

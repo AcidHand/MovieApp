@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="androis.example.filmapp.presentation.screen.main.StartViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:textSize="@dimen/text_size_large"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/grey_dark_800"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Главная"
+                app:titleTextColor="@color/grey_light" />
+
+            <TextView
+                android:textSize="@dimen/text_size_medium"
+                android:id="@+id/genres"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_30"
+                android:layout_margin="@dimen/app_margin_8"
+                android:background="@color/grey_dark_800"
+                android:gravity="center"
+                android:text="@string/genres"
+                android:textColor="@color/grey_light"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_genres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:adapter="@{viewModel.genreAdapter}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/genres"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_genre" />
+
+            <TextView
+                android:textSize="@dimen/text_size_medium"
+                android:id="@+id/films"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_30"
+                android:layout_margin="@dimen/app_margin_8"
+                android:layout_marginTop="@dimen/app_margin_8"
+                android:background="@color/grey_dark_800"
+                android:gravity="center"
+                android:text="@string/films"
+                android:textColor="@color/grey_light"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_genres" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_films"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin_20"
+                app:adapter="@{viewModel.filmAdapter}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/films"
+                app:spanCount="2"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_film" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</layout>
+
